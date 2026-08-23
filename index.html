@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ==================== 1) DOCUMENT SETUP ==================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Notebook</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ==================== 2) APP CONTAINER ==================== -->
+
+    <div class="app">
+
+
+        <!-- ==================== 3) HEADER ==================== -->
+
+        <header class="header">
+
+            <div class="brand">
+                <h1>Digital Notebook</h1>
+                <p>Your space for ideas, notes & thoughts</p>
+            </div>
+
+
+            <div class="header-actions">
+
+                <button class="btn search-btn" id="searchBtn">
+                    Search
+                </button>
+
+                <button class="btn new-page-btn" id="newPageBtn">
+                    + New Page
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==================== 4) MAIN CONTENT ==================== -->
+
+        <main class="main-content">
+
+
+            <!-- ==================== 5) EMPTY STATE ==================== -->
+
+            <section class="empty-state" id="emptyState">
+
+                <div class="empty-content">
+
+                    <h2>Your notebook is empty</h2>
+
+                    <p>
+                        Start creating your first page and turn your ideas
+                        into something worth remembering.
+                    </p>
+
+                    <button class="btn primary-btn" id="startPageBtn">
+                        Create Your First Page
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================== 6) NOTEBOOK ==================== -->
+
+            <section class="notebook" id="notebook">
+
+
+                <!-- ==================== 7) NOTEBOOK HEADER ==================== -->
+
+                <div class="notebook-header">
+
+                    <div class="page-info">
+
+                        <input
+                            type="text"
+                            class="page-title"
+                            id="pageTitle"
+                            placeholder="Page Title"
+                            maxlength="80"
+                        >
+
+                        <p class="page-date" id="pageDate">
+                            Aug 15, 2026
+                        </p>
+
+                    </div>
+
+
+                    <div class="page-counter" id="pageCounter">
+                        Page 01 / 01
+                    </div>
+
+                </div>
+
+
+                <!-- ==================== 8) PAPER STYLE CONTROLS ==================== -->
+
+                <div class="paper-controls">
+
+                    <span class="paper-label">
+                        Paper Style
+                    </span>
+
+                    <div class="paper-options">
+
+                        <button
+                            class="paper-option active"
+                            data-paper="ruled"
+                        >
+                            Ruled
+                        </button>
+
+                        <button
+                            class="paper-option"
+                            data-paper="grid"
+                        >
+                            Grid 
+                        </button>
+
+                        <button
+                            class="paper-option"
+                            data-paper="blank"
+                        >
+                            Blank
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================== 9) WRITING AREA ==================== -->
+
+                <div class="writing-area">
+
+                    <textarea
+                        id="noteContent"
+                        class="note-content"
+                        placeholder="Start writing your thoughts, ideas or notes..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- ==================== 10) NOTEBOOK FOOTER ==================== -->
+
+                <div class="notebook-footer">
+
+
+                    <!-- ==================== 11) PAGE NAVIGATION ==================== -->
+
+                    <div class="page-navigation">
+
+                        <button
+                            class="navigation-btn"
+                            id="previousPageBtn"
+                        >
+                            ← Previous
+                        </button>
+
+                        <span id="navigationCounter">
+                            Page 01 / 01
+                        </span>
+
+                        <button
+                            class="navigation-btn"
+                            id="nextPageBtn"
+                        >
+                            Next →
+                        </button>
+
+                    </div>
+
+
+                    <!-- ==================== 12) SAVE AREA ==================== -->
+
+                    <div class="save-area">
+
+                        <button
+                            class="btn save-btn"
+                            id="saveBtn"
+                        >
+                            Save
+                        </button>
+
+                        <span
+                            class="save-status"
+                            id="saveStatus"
+                        >
+                            Not saved yet
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================== 13) PAGE OPTIONS ==================== -->
+
+                <div class="page-options">
+
+                    <button
+                        class="options-btn"
+                        id="optionsBtn"
+                    >
+                        ⋯ Page Options
+                    </button>
+
+
+                    <div
+                        class="options-menu"
+                        id="optionsMenu"
+                    >
+
+                        <button id="renamePageBtn">
+                            Rename
+                        </button>
+
+                        <button id="changePaperBtn">
+                            Change Paper Style
+                        </button>
+
+                        <button id="clearContentBtn">
+                            Clear Content
+                        </button>
+
+                        <button id="deletePageBtn">
+                            Delete Page
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ==================== 14) SEARCH PANEL ==================== -->
+
+        <div
+            class="search-overlay"
+            id="searchOverlay"
+        >
+
+            <div class="search-panel">
+
+                <div class="search-header">
+
+                    <h2>Search Notebook</h2>
+
+                    <button
+                        class="close-search-btn"
+                        id="closeSearchBtn"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="search-input-area">
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search by title or content..."
+                    >
+
+                </div>
+
+
+                <div
+                    class="search-results"
+                    id="searchResults"
+                >
+
+                    <p class="search-empty">
+                        Search your notebook to find a page.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================== 15) CONFIRMATION MODAL ==================== -->
+
+        <div
+            class="modal-overlay"
+            id="confirmModal"
+        >
+
+            <div class="confirmation-modal">
+
+                <h2 id="modalTitle">
+                    Are you sure?
+                </h2>
+
+                <p id="modalMessage">
+                    This action cannot be undone.
+                </p>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        class="btn cancel-btn"
+                        id="cancelModalBtn"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        class="btn confirm-btn"
+                        id="confirmModalBtn"
+                    >
+                        Confirm
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================== 16) CREATE PAGE MODAL ==================== -->
+
+        <div
+            class="modal-overlay"
+            id="createPageModal"
+        >
+
+            <div class="create-page-modal">
+
+                <h2>Create New Page</h2>
+
+                <p>
+                    Give your new page a title and choose your paper style.
+                </p>
+
+
+                <!-- ==================== 17) NEW PAGE TITLE ==================== -->
+
+                <div class="form-group">
+
+                    <label for="newPageTitle">
+                        Page Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newPageTitle"
+                        placeholder="Enter page title..."
+                        maxlength="80"
+                    >
+
+                </div>
+
+
+                <!-- ==================== 18) NEW PAGE PAPER STYLE ==================== -->
+
+                <div class="form-group">
+
+                    <label>
+                        Paper Style
+                    </label>
+
+                    <div class="modal-paper-options">
+
+                        <button
+                            class="modal-paper-option active"
+                            data-new-paper="ruled"
+                        >
+                            Ruled
+                        </button>
+
+                        <button
+                            class="modal-paper-option"
+                            data-new-paper="grid"
+                        >
+                            Grid
+                        </button>
+
+                        <button
+                            class="modal-paper-option"
+                            data-new-paper="blank"
+                        >
+                            Blank
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================== 19) CREATE PAGE ACTIONS ==================== -->
+
+                <div class="modal-actions">
+
+                    <button
+                        class="btn cancel-btn"
+                        id="cancelCreatePageBtn"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        class="btn primary-btn"
+                        id="confirmCreatePageBtn"
+                    >
+                        Start Writing
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ==================== 20) JAVASCRIPT ==================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
